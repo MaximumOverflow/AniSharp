@@ -1,0 +1,4 @@
+namespace AniSharp.Types.Misc
+{
+	
+}

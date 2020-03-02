@@ -1,55 +1,64 @@
+using AniSharp.Types.Connections;
+using AniSharp.Types.Media.Statistics;
+using AniSharp.Types.Misc;
 using CSGraphQL.GraphQL;
 
-namespace AniSharp.Types
+namespace AniSharp.Types.Media
 {
-    //TODO Make it internal
-    //TODO Add remaining fields
-    public class Media : Type
-    {
-        [Variable] [Request] public int? Id { get; set; }
-        [Variable] [Request] public int? IdMal { get; set; }
-        [Variable("StartDate")] public int? EndDateInt { get; set; }
-        [Variable("EndDate")] public int? StartDateInt { get; set; }
-        [Variable] [Request] public MediaSeason? Season { get; set; }
-        [Variable] [Request] public int? SeasonYear { get; set; }
-        [Variable] [Request] public MediaType? Type { get; set; }
-        [Variable] [Request] public MediaFormat? Format { get; set; }
-        [Variable] [Request] public MediaStatus? Status { get; set; }
-        [Variable] [Request] public int? Episodes { get; set; }
-        [Variable] [Request] public int? Duration { get; set; }
-        [Variable] [Request] public int? Chapters { get; set; }
-        [Variable] [Request] public int? Volumes { get; set; }
-        [Variable] [Request] public bool? IsAdult { get; set; }
-        [Variable] public string Genre { get; set; }
-        [Variable] public string Tag { get; set; }
-        [Variable] public int? MinimumTagRank { get; set; }
-        [Variable] public string TagCategory { get; set; }
-        [Variable] public bool? OnList { get; set; }
-        [Variable] public string LicensedBy { get; set; }
-        [Variable] [Request] public int? AverageScore { get; set; }
-        [Variable] [Request] public int? Popularity { get; set; }
-        [Variable] [Request] public MediaSource? Source { get; set; }
-        [Variable] [Request] public string CountryOfOrigin { get; set; }
-        [Variable] public string Search { get; set; }
-        [Variable] public MediaSort? Sort { get; set; }
-        
-        [Request] public MediaTitle Title { get; set; }
-        [Request] public string Description { get; set; }
-        [Request] public int SeasonInt { get; set; }
-        [Request] public bool IsLicensed { get; set; }
-        [Request] public string HashTag { get; set; }
-        [Request] public MediaTrailer Trailer { get; set; }
-        [Request] public int UpdatedAt { get; set; }
-        [Request] public MediaCoverImage CoverImage { get; set; }
-        [Request] public string BannerImage { get; set; }
-        [Request] public string[] Genres { get; set; }
-        [Request] public string[] Synonyms { get; set; }
-        [Request] public int MeanScore { get; set; }
-        [Request] public bool IsLocked { get; set; }
-        [Request] public bool Trending { get; set; }
-        [Request] public bool Favourites { get; set; }
-        [Request] public MediaTag[] Tags { get; set; }
-        [Request] public MediaDate EndDate { get; set; }
-        [Request] public MediaDate StartDate { get; set; }
-    }
+	public class Media : GraphQlType
+	{
+		[TypeField] public int Id { get; set; }
+		[TypeField] public int IdMal { get; set; }
+		[TypeField] public MediaTitle Title { get; set; }
+		[TypeField] public MediaType Type { get; set; }
+		[TypeField] public MediaFormat Format { get; set; }
+		[TypeField] public MediaStatus Status { get; set; }
+		[TypeField] public string Description { get; set; }
+		[TypeField] public Date StartDate { get; set; }
+		[TypeField] public Date EndDate { get; set; }
+		[TypeField] public MediaSeason Season { get; set; }
+		[TypeField] public int SeasonYear { get; set; }
+		[TypeField] public int SeasonInt { get; set; }
+		[TypeField] public int Episodes { get; set; }
+		[TypeField] public int Duration { get; set; }
+		[TypeField] public int Chapters { get; set; }
+		[TypeField] public int Volumes { get; set; }
+		[TypeField] public string CountryOfOrigin { get; set; }
+		[TypeField] public bool IsLicensed { get; set; }
+		[TypeField] public MediaSource Source { get; set; }
+		[TypeField] public string Hashtag { get; set; }
+		[TypeField] public MediaTrailer Trailer { get; set; }
+		[TypeField] public int UpdatedAt { get; set; }
+		[TypeField] public MediaCoverImage CoverImage { get; set; }
+		[TypeField] public string BannerImage { get; set; }
+		[TypeField] public string[] Genres { get; set; }
+		[TypeField] public string[] Synonyms { get; set; }
+		[TypeField] public int AverageScore { get; set; }
+		[TypeField] public int MeanScore { get; set; }
+		[TypeField] public int Popularity { get; set; }
+		[TypeField] public bool IsLocked { get; set; }
+		[TypeField] public int Trending { get; set; }
+		[TypeField] public int Favourites { get; set; }
+		[TypeField] public MediaTag[] Tags { get; set; }
+		[TypeField] public MediaConnection Relations { get; set; }
+		[TypeField] public CharacterConnection Characters { get; set; }
+		[TypeField] public StaffConnection Staff { get; set; }
+		[TypeField] public StudioConnection Studios { get; set; }
+		[TypeField] public bool IsFavourite { get; set; }
+		[TypeField] public bool IsAdult { get; set; }
+		[TypeField] public AiringSchedule NextAiringEpisode { get; set; }
+		[TypeField] public AiringScheduleConnection AiringSchedule { get; set; }
+		[TypeField] public MediaTrendConnection Trends { get; set; }
+		[TypeField] public MediaExternalLink[] ExternalLinks { get; set; }
+		[TypeField] public MediaStreamingEpisode[] StreamingEpisodes { get; set; }
+		[TypeField] public MediaRank[] Rankings { get; set; }
+		[TypeField] public MediaList MediaListEntry { get; set; }
+		[TypeField] public ReviewConnection Reviews { get; set; }
+		[TypeField] public RecommendationConnection Recommendations { get; set; }
+		[TypeField] public MediaStats Stats { get; set; }
+		[TypeField] public string SiteUrl { get; set; }
+		[TypeField] public bool AutoCreateForumThread { get; set; }
+		[TypeField] public bool IsRecommendationBlocked { get; set; }
+		[TypeField] public string ModNotes { get; set; }
+	}
 }

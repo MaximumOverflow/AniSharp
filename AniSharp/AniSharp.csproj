@@ -2,10 +2,16 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>AniSharp</Title>
+        <Authors>Massimo Bertozzi</Authors>
+        <Description>A simple to use client library for Anilist</Description>
+        <RepositoryUrl>https://github.com/MaximumOverflow/AniSharp</RepositoryUrl>
+        <PackageVersion>1.5.0</PackageVersion>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="CSGraphQL" Version="0.7.0" />
+      <PackageReference Include="CSGraphQL" Version="0.8.2" />
     </ItemGroup>
 
 </Project>
