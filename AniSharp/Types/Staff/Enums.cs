@@ -2,15 +2,15 @@ namespace AniSharp.Types.Staff
 {
 	public enum StaffLanguage
 	{
-		Japanese,
-		English,
-		Korean,
-		Italian,
-		Spanish,
-		Portuguese,
-		French,
-		German,
-		Hebrew,
-		Hungarian,
+		JAPANESE,
+		ENGLISH,
+		KOREAN,
+		ITALIAN,
+		SPANISH,
+		PORTUGUESE,
+		FRENCH,
+		GERMAN,
+		HEBREW,
+		HUNGARIAN,
 	}
 }

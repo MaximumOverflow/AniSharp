@@ -2,138 +2,138 @@ namespace AniSharp.Types.Media
 {
 	public enum MediaType
 	{
-		Anime, 
-		Manga
+		ANIME, 
+		MANGA
 	}
 
 	public enum MediaFormat
 	{
-		Tv,
-		TvShort,
-		Movie,
-		Special,
-		Ova,
-		Ona,
-		Music,
-		Manga,
-		Novel,
-		OneShot,
+		TV,
+		TV_SHORT,
+		MOVIE,
+		SPECIAL,
+		OVA,
+		ONA,
+		MUSIC,
+		MANGA,
+		NOVEL,
+		ONE_SHOT,
 	}
 
 	public enum MediaStatus
 	{
-		Finished,
-		Releasing,
-		NotYetReleased,
-		Cancelled,
+		FINISHED,
+		RELEASING,
+		NOT_YET_RELEASED,
+		CANCELLED,
 	}
 
 	public enum MediaSeason
 	{
-		Winter,
-		Spring,
-		Summer,
-		Fall
+		WINTER,
+		SPRING,
+		SUMMER,
+		FALL
 	}
 
 	public enum MediaSource
 	{
-		Original,
-		Manga,
-		LightNovel,
-		VisualNovel,
-		VideoGame,
-		Other,
-		Novel,
-		Doujinshi,
-		Anime,
+		ORIGINAL,
+		MANGA,
+		LIGHT_NOVEL,
+		VISUAL_NOVEL,
+		VIDEO_GAME,
+		OTHER,
+		NOVEL,
+		DOUJINSHI,
+		ANIME,
 	}
 
 	public enum MediaRelation
 	{
-		Adaptation,
-		Prequel,
-		Sequel,
-		Parent,
-		SideStory,
-		Character,
-		Summary,
-		Alternative,
-		SpinOff,
-		Other,
-		Source,
-		Compilation,
-		Contains,
+		ADAPTATION,
+		PREQUEL,
+		SEQUEL,
+		PARENT,
+		SIDE_STORY,
+		CHARACTER,
+		SUMMARY,
+		ALTERNATIVE,
+		SPIN_OFF,
+		OTHER,
+		SOURCE,
+		COMPILATION,
+		CONTAINS,
 	}
 
 	public enum MediaListStatus
 	{
-		Current,
-		Planning,
-		Completed,
-		Dropped,
-		Paused,
-		Repeating,
+		CURRENT,
+		PLANNING,
+		COMPLETED,
+		DROPPED,
+		PAUSED,
+		REPEATING,
 	}
 
 	public enum MediaSort
 	{
-		Id,
-		IdDesc,
-		TitleRomaji,
-		TitleRomajiDesc,
-		TitleEnglish,
-		TitleEnglishDesc,
-		TitleNative,
-		TitleNativeDesc,
-		Type,
-		TypeDesc,
-		Format,
-		FormatDesc,
-		StartDate,
-		StartDateDesc,
-		EndDate,
-		EndDateDesc,
-		Score,
-		ScoreDesc,
-		Popularity,
-		PopularityDesc,
-		Trending,
-		TrendingDesc,
-		Episodes,
-		EpisodesDesc,
-		Duration,
-		DurationDesc,
-		Status,
-		StatusDesc,
-		Chapters,
-		ChaptersDesc,
-		Volumes,
-		VolumesDesc,
-		UpdatedAt,
-		UpdatedAtDesc,
-		SearchMatch,
-		Favourites,
-		FavouritesDesc
+		ID,
+		ID_DESC,
+		TITLE_ROMAJI,
+		TITLE_ROMAJI_DESC,
+		TITLE_ENGLISH,
+		TITLE_ENGLISH_DESC,
+		TITLE_NATIVE,
+		TITLE_NATIVE_DESC,
+		TYPE,
+		TYPE_DESC,
+		FORMAT,
+		FORMAT_DESC,
+		START_DATE,
+		START_DATE_DESC,
+		END_DATE,
+		END_DATE_DESC,
+		SCORE,
+		SCORE_DESC,
+		POPULARITY,
+		POPULARITY_DESC,
+		TRENDING,
+		TRENDING_DESC,
+		EPISODES,
+		EPISODES_DESC,
+		DURATION,
+		DURATION_DESC,
+		STATUS,
+		STATUS_DESC,
+		CHAPTERS,
+		CHAPTERS_DESC,
+		VOLUMES,
+		VOLUMES_DESC,
+		UPDATED_AT,
+		UPDATED_AT_DESC,
+		SEARCH_MATCH,
+		FAVOURITES,
+		FAVOURITES_DESC
 	}
 
 	public enum MediaRankType
 	{
-		Rated,
-		Popular
+		RATED,
+		POPULAR
 	}
 
 	public enum ReviewRating
 	{
-		NoVote,
-		UpVote,
-		DownVote,
+		NO_VOTE,
+		UP_VOTE,
+		DOWN_VOTE,
 	}
 	
 	public enum RecommendationRating
 	{
-		NoVote,
-		UpVote,
-		DownVote,
+		NO_VOTE,
+		UP_VOTE,
+		DOWN_VOTE,
 	}
 }

@@ -8,6 +8,6 @@ namespace AniSharp.Types.Users
 		[TypeField] public bool DisplayAdultContent { get; set; }
 		[TypeField] public bool AiringNotifications { get; set; }
 		[TypeField] public string ProfileColor { get; set; }
-		[TypeField] public NotificationOption[] NotificationOption { get; set; }
+		[TypeField] public NotificationOption[] NotificationOptions { get; set; }
 	}
 }

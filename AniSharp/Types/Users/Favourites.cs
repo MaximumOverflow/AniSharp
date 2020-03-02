@@ -4,6 +4,7 @@ using CSGraphQL.GraphQL.Short;
 
 namespace AniSharp.Types.Users
 {
+	//Fix recursion
 	public class Favourites : GraphQlType
 	{
 		[TypeField] public MediaConnection Anime { get; set; }

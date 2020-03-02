@@ -17,11 +17,11 @@ namespace AniSharp.Types.Users
 		[TypeField] public MediaListOptions MediaListOptions{ get; set; }
 		[TypeField] public Favourites Favourites{ get; set; }
 		[TypeField] public UserStatisticTypes Statistics{ get; set; }
-		[TypeField] public int UnreadNotificationCount{ get; set; }
+		[TypeField] public int UnreadNotificationCount { get; set; }
 		[TypeField] public string SiteUrl { get; set; }
 		[TypeField] public int DonatorTier { get; set; }
 		[TypeField] public string DonatorBadge { get; set; }
-		[TypeField] public string ModeratorBadge { get; set; }
+		[TypeField] public string ModeratorStatus { get; set; }
 		[TypeField] public int UpdatedAt { get; set; }
 	}
 }

@@ -1,11 +1,11 @@
 using AniSharp.Types.Media;
 using CSGraphQL.GraphQL.Short;
 
-namespace AniSharp.Queries.Base
+namespace AniSharp.Queries.Base.Media
 {
 	public abstract class MangaQuery : MediaQuery
 	{
-		public override MediaType Type => MediaType.Manga;
+		public override MediaType Type => MediaType.MANGA;
 		[Variable] public int? Chapters { get; set; }
 		[Variable] public int? Volumes { get; set; }
 	}

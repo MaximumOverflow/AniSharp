@@ -1,5 +1,4 @@
 using AniSharp.Types.Media;
-using AniSharp.Types.Misc;
 using CSGraphQL.GraphQL;
 
 namespace AniSharp.Types.Users.Statistics

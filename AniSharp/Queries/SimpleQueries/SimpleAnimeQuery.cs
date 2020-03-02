@@ -1,4 +1,5 @@
 using AniSharp.Queries.Base;
+using AniSharp.Queries.Base.Media;
 using AniSharp.Types.Media;
 using AniSharp.Types.Misc;
 using CSGraphQL.GraphQL.Short;

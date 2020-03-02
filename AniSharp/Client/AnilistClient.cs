@@ -6,7 +6,14 @@ using AniSharp.Types.Media;
 using AniSharp.Results;
 using CSGraphQL;
 using System;
-
+using System.Collections.Generic;
+using AniSharp.Mutations.SimpleMutations;
+using AniSharp.Queries.AdvancedQueries;
+using AniSharp.Queries.Base.Media;
+using AniSharp.Queries.Base.Users;
+using AniSharp.Types.Misc;
+using AniSharp.Types.Users;
+using CSGraphQL.Extensions;
 using Media = AniSharp.Results.Media;
 
 namespace AniSharp.Client
@@ -14,14 +21,16 @@ namespace AniSharp.Client
     public class AnilistClient
     {
         private static readonly GraphQlClient graphql = new GraphQlClient("https://graphql.anilist.co");
-        private AccessToken? _loginCredentials;
 
-        #region MediaSearch
+        private KeyValuePair<string, string>[] Headers => 
+            _loginCredentials.HasValue ? new[] {_loginCredentials.Value.AccessHeader} : null;
+        
+        #region Queries
 
         public T GetMedia<T>(MediaQuery query)
             where T : Media => GetMediaAsync<T>(query).Result;
         public async Task<T> GetMediaAsync<T>(MediaQuery query)
-            where T : Media => await graphql.PostAsync<T>(query, _loginCredentials.HasValue ? new []{ _loginCredentials.Value.AccessHeader } : null);
+            where T : Media => await graphql.PostAsync<T>(query, Headers);
 
         public T GetAnime<T>(AnimeQuery query)
             where T : Anime => GetAnimeAsync<T>(query).Result;
@@ -125,15 +134,65 @@ namespace AniSharp.Client
             });
         }
 
+        public T GetUser<T>(UserQuery query) where T : User => GetUserAsync<T>(query).Result;
+        public async Task<T> GetUserAsync<T>(UserQuery query) where T : User => await graphql.PostAsync<T>(query, Headers);
+        public User GetUser(int? id = null, string name = null, string search = null, UserSort? sort = null) 
+            => GetUserAsync(id, name, search, sort).Result;
+        public async Task<User> GetUserAsync(int? id = null, string name = null, string search = null, UserSort? sort = null)
+        {
+            return await GetUserAsync<User>(new SimpleUserQuery
+            {
+                Id = id,
+                Name = name,
+                Search = search,
+                Sort = sort,
+            });
+        }
+
         #endregion
 
         #region AccountManagement
 
-        public void Login(AccessToken token) => _loginCredentials = token;
-        public void Login(AccessTokenProvider provider) => _loginCredentials = provider.GetAccessToken();
-        public void Login(int clientId, string token) => _loginCredentials = new AccessToken(clientId, token);
-        public void Login<T>(int clientId) where T : AccessTokenProvider => _loginCredentials = Activator.CreateInstance<T>().GetAccessToken();
+        public User User => _user ?? throw new InvalidOperationException("You must login first");
+        private AccessToken? _loginCredentials;
+        private User _user;
 
+        public void Login(AccessToken token)
+        {
+            _loginCredentials = token;
+            _user = GetUser<User>(new ViewerQuery());
+        }
+        public void Login(AccessTokenProvider provider) => Login(provider.GetAccessToken());
+        public void Login(int clientId, string token) => Login(new AccessToken(clientId, token));
+        public void Login<T>(int clientId) where T : AccessTokenProvider 
+            => Login(Activator.CreateInstance(typeof(T), clientId) as AccessTokenProvider);
+
+        public void DeleteMediaListEntry(int mediaId)
+        {
+            var result = graphql.Post<MediaList>(new SimpleSaveMediaListEntryMutation(mediaId), Headers);
+            graphql.PostToJson(new SimpleDeleteMediaListEntryMutation(result.Id), Headers);
+        }
+
+        public void EditMediaListEntry(int mediaId, MediaListStatus? status = null, float? score = null,
+            int? scoreRaw = null, int? progress = null, int? progressVolumes = null, int? repeat = null,
+            int? priority = null, bool? @private = null, string notes = null, bool? hiddenFromStatusLists = null,
+            string[] customLists = null, float[] advancedScores = null, Date startedAt = null, Date completedAt = null)
+        {
+            graphql.PostToJson(new SimpleSaveMediaListEntryMutation(mediaId)
+            {
+                AdvancedScores = advancedScores,
+                CompletedAt = completedAt,
+                CustomLists = customLists,
+                HiddenFromStatusLists = hiddenFromStatusLists,
+                Notes = notes,
+                Priority = priority,
+                Private = @private,
+                Progress = progress,
+                ProgressVolumes = progressVolumes,
+                Repeat = repeat
+            }, Headers);
+        }
+        
         #endregion
     }
 }

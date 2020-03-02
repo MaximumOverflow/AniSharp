@@ -2,38 +2,51 @@ namespace AniSharp.Types.Users
 {
 	public enum UserTitleLanguage
 	{
-		Romaji,
-		English,
-		Native,
-		RomajiStylised,
-		EnglishStylised,
-		NativeStylised,
+		ROMAJI,
+		ENGLISH,
+		NATIVE,
+		ROMAJI_STYLISED,
+		ENGLISH_STYLISED,
+		NATIVE_STYLISED,
 	}
 
 	public enum NotificationType
 	{
-		ActivityMessage,
-		ActivityReply,
-		Following,
-		ActivityMention,
-		ThreadCommentMention,
-		ThreadSubscribed,
-		ThreadCommentReply,
-		Airing,
-		ActivityLike,
-		ActivityReplyLike,
-		ThreadLike,
-		ThreadCommentLike,
-		ActivityReplySubscribed,
-		RelatedMediaAddition,
+		ACTIVITY_MESSAGE,
+		ACTIVITY_REPLY,
+		FOLLOWING,
+		ACTIVITY_MENTION,
+		THREAD_COMMENT_MENTION,
+		THREAD_SUBSCRIBED,
+		THREAD_COMMENT_REPLY,
+		AIRING,
+		ACTIVITY_LIKE,
+		ACTIVITY_REPLY_LIKE,
+		THREAD_LIKE,
+		THREAD_COMMENT_LIKE,
+		ACTIVITY_REPLY_SUBSCRIBED,
+		RELATED_MEDIA_ADDITION,
 	}
 
 	public enum ScoreFormat
 	{
-		Point100,
-		Point10Decimal,
-		Point10,
-		Point5,
-		Point3,
+		POINT_100,
+		POINT_10_DECIMAL,
+		POINT_10,
+		POINT_5,
+		POINT_3,
+	}
+
+	public enum UserSort
+	{
+		ID,
+		ID_DESC,
+		USERNAME,
+		USERNAME_DESC,
+		WATCHED_TIME,
+		WATCHED_TIME_DESC,
+		CHAPTERS_READ,
+		CHAPTERS_READ_DESC,
+		SEARCH_MATCH,
 	}
 }
