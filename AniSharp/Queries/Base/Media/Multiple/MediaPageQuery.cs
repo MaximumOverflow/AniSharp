@@ -1,5 +1,5 @@
-using AniSharp.Types.Media;
 using CSGraphQL.GraphQL;
+using AniSharp.Types.Media;
 using CSGraphQL.GraphQL.Short;
 
 namespace AniSharp.Queries.Base.Media.Multiple
@@ -9,13 +9,12 @@ namespace AniSharp.Queries.Base.Media.Multiple
 	{
 		[Variable] public int Page { get; set; }
 		[Variable] public int PerPage { get; set; }
-		
-		[NestedVariable] public int? Id { get; set; }
+
+		public abstract MediaType Type { get; }
 		[NestedVariable] public int? EndDate { get; set; }
 		[NestedVariable] public int? StartDate { get; set; }
 		[NestedVariable] public MediaSeason? Season { get; set; }
 		[NestedVariable] public int? SeasonYear { get; set; }
-		public abstract MediaType Type { get; }
 		[NestedVariable] public MediaFormat? Format { get; set; }
 		[NestedVariable] public MediaStatus? Status { get; set; }
 		[NestedVariable] public bool? IsAdult { get; set; }

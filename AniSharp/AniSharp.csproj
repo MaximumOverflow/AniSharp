@@ -11,7 +11,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="CSGraphQL" Version="0.8.11" />
+      <PackageReference Include="CSGraphQL" Version="0.8.13" />
     </ItemGroup>
 
 </Project>

@@ -1,5 +1,3 @@
-using AniSharp.Queries.Base;
-using AniSharp.Queries.Base.Media;
 using AniSharp.Queries.Base.Media.Single;
 using AniSharp.Types.Media;
 using AniSharp.Types.Misc;

@@ -41,18 +41,25 @@ namespace AniSharp.Client
             where T : MediaPage => SearchMediaAsync<T>(query).Result;
         public async Task<T> SearchMediaAsync<T>(MediaPageQuery query)
             where T : MediaPage => await graphql.PostAsync<T>(query, Headers);
-            
 
         public T GetAnime<T>(AnimeQuery query)
             where T : Anime => GetAnimeAsync<T>(query).Result;
         public async Task<T> GetAnimeAsync<T>(AnimeQuery query)
             where T : Anime => await GetMediaAsync<T>(query);
+        public T SearchAnime<T>(AnimePageQuery query)
+            where T : AnimePage => SearchAnimeAsync<T>(query).Result;
+        public async Task<T> SearchAnimeAsync<T>(AnimePageQuery query)
+            where T : AnimePage => await graphql.PostAsync<T>(query, Headers);
 
         public T GetManga<T>(MangaQuery query)
                     where T : Manga => GetMangaAsync<T>(query).Result;
         public async Task<T> GetMangaAsync<T>(MangaQuery query)
             where T : Manga => await GetMediaAsync<T>(query);
-
+        public T SearchManga<T>(MangaPageQuery query)
+            where T : MangaPage => SearchMangaAsync<T>(query).Result;
+        public async Task<T> SearchMangaAsync<T>(MangaPageQuery query)
+            where T : MangaPage => await graphql.PostAsync<T>(query, Headers);
+        
         public Anime GetAnime(int? id = null, int? endDate = null, int? startDate = null,
             MediaSeason? season = null, int? seasonYear = null, MediaFormat? format = null,
             MediaStatus? status = null, int? episodes = null, int? duration = null, bool? isAdult = null, string genre = null, string tag = null,
@@ -98,7 +105,55 @@ namespace AniSharp.Client
                 Sort = sort,
             });
         }
+
+        public async Task<AnimePage> SearchAnimeAsync(int page, int perPage, int? endDate = null, int? startDate = null,
+            MediaSeason? season = null, int? seasonYear = null, MediaFormat? format = null,
+            MediaStatus? status = null, int? episodes = null, int? duration = null, bool? isAdult = null,
+            string genre = null, string tag = null,
+            int? minimumTagRank = null, string tagCategory = null, bool? onList = null, string licensedBy = null,
+            int? averageScore = null, int? popularity = null, MediaSource? source = null,
+            string countryOfOrigin = null, string search = null, MediaSort? sort = null)
+        {
+            return await SearchAnimeAsync<AnimePage>(new SimpleAnimePageQuery(page, perPage)
+            {
+                EndDate = endDate,
+                StartDate = startDate,
+                Season = season,
+                SeasonYear = seasonYear,
+                Format = format,
+                Status = status,
+                Episodes = episodes,
+                Duration = duration,
+                IsAdult = isAdult,
+                Genre = genre,
+                Tag = tag,
+                MinimumTagRank = minimumTagRank,
+                TagCategory = tagCategory,
+                OnList = onList,
+                LicensedBy = licensedBy,
+                AverageScore = averageScore,
+                Popularity = popularity,
+                Source = source,
+                CountryOfOrigin = countryOfOrigin,
+                Search = search,
+                Sort = sort,
+            });
+        }
         
+        public AnimePage SearchAnime(int page, int perPage, int? endDate = null, int? startDate = null,
+            MediaSeason? season = null, int? seasonYear = null, MediaFormat? format = null,
+            MediaStatus? status = null, int? episodes = null, int? duration = null, bool? isAdult = null,
+            string genre = null, string tag = null,
+            int? minimumTagRank = null, string tagCategory = null, bool? onList = null, string licensedBy = null,
+            int? averageScore = null, int? popularity = null, MediaSource? source = null,
+            string countryOfOrigin = null, string search = null, MediaSort? sort = null)
+        {
+            return SearchAnimeAsync(page, perPage, endDate, startDate, season, seasonYear, format, status, episodes, duration,
+                isAdult, genre, tag, minimumTagRank, tagCategory, onList, licensedBy, averageScore, popularity, source,
+                countryOfOrigin, search, sort).Result;
+        }
+
+
         public Manga GetManga(int? id = null, int? endDate = null, int? startDate = null,
             MediaSeason? season = null, int? seasonYear = null, MediaFormat? format = null,
             MediaStatus? status = null, int? chapters = null, int? volumes = null, bool? isAdult = null, string genre = null, string tag = null,
@@ -143,6 +198,52 @@ namespace AniSharp.Client
                 Search = search,
                 Sort = sort,
             });
+        }
+        
+        public async Task<MangaPage> SearchMangaAsync(int page, int perPage, int? endDate = null, int? startDate = null,
+            MediaSeason? season = null, int? seasonYear = null, MediaFormat? format = null,
+            MediaStatus? status = null, int? chapters = null, int? volumes = null, bool? isAdult = null, string genre = null, string tag = null,
+            int? minimumTagRank = null, string tagCategory = null, bool? onList = null, string licensedBy = null,
+            int? averageScore = null, int? popularity = null, MediaSource? source = null,
+            string countryOfOrigin = null, string search = null, MediaSort? sort = null)
+        {
+            return await SearchMangaAsync<MangaPage>(new SimpleMangaPageQuery(page, perPage)
+            {
+                EndDate = endDate,
+                StartDate = startDate,
+                Season = season,
+                SeasonYear = seasonYear,
+                Format = format,
+                Status = status,
+                Chapters = chapters,
+                Volumes = volumes,
+                IsAdult = isAdult,
+                Genre = genre,
+                Tag = tag,
+                MinimumTagRank = minimumTagRank,
+                TagCategory = tagCategory,
+                OnList = onList,
+                LicensedBy = licensedBy,
+                AverageScore = averageScore,
+                Popularity = popularity,
+                Source = source,
+                CountryOfOrigin = countryOfOrigin,
+                Search = search,
+                Sort = sort,
+            });
+        }
+        
+        public MangaPage SearchManga(int page, int perPage, int? endDate = null, int? startDate = null,
+            MediaSeason? season = null, int? seasonYear = null, MediaFormat? format = null,
+            MediaStatus? status = null, int? chapters = null, int? volumes = null, bool? isAdult = null,
+            string genre = null, string tag = null,
+            int? minimumTagRank = null, string tagCategory = null, bool? onList = null, string licensedBy = null,
+            int? averageScore = null, int? popularity = null, MediaSource? source = null,
+            string countryOfOrigin = null, string search = null, MediaSort? sort = null)
+        {
+            return SearchMangaAsync(page, perPage, endDate, startDate, season, seasonYear, format, status, chapters, volumes,
+                isAdult, genre, tag, minimumTagRank, tagCategory, onList, licensedBy, averageScore, popularity, source,
+                countryOfOrigin, search, sort).Result;
         }
 
         public T GetUser<T>(UserQuery query) where T : User => GetUserAsync<T>(query).Result;
