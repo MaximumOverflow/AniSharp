@@ -1,6 +1,6 @@
 using CSGraphQL.GraphQL.Short;
 
-namespace AniSharp.Results
+namespace AniSharp.Results.Single
 {
 	public class Anime : Media
 	{

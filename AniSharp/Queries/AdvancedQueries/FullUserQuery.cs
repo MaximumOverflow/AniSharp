@@ -1,7 +1,6 @@
 using AniSharp.Types.Users;
 using CSGraphQL.GraphQL.Short;
 using AniSharp.Queries.Base.Users;
-using AniSharp.Types.Users.Statistics;
 
 namespace AniSharp.Queries.AdvancedQueries
 {

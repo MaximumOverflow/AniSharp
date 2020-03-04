@@ -10,17 +10,23 @@ using System.Collections.Generic;
 using AniSharp.Mutations.SimpleMutations;
 using AniSharp.Queries.AdvancedQueries;
 using AniSharp.Queries.Base.Media;
+using AniSharp.Queries.Base.Media.Multiple;
+using AniSharp.Queries.Base.Media.Single;
 using AniSharp.Queries.Base.Users;
+using AniSharp.Results.Pages;
+using AniSharp.Results.Single;
 using AniSharp.Types.Misc;
 using AniSharp.Types.Users;
 using CSGraphQL.Extensions;
-using Media = AniSharp.Results.Media;
+using Media = AniSharp.Results.Single.Media;
+using User = AniSharp.Results.Single.User;
 
 namespace AniSharp.Client
 {
     public class AnilistClient
     {
         private static readonly GraphQlClient graphql = new GraphQlClient("https://graphql.anilist.co");
+        public static readonly AnilistClient Default = new AnilistClient();
 
         private KeyValuePair<string, string>[] Headers => 
             _loginCredentials.HasValue ? new[] {_loginCredentials.Value.AccessHeader} : null;
@@ -31,6 +37,11 @@ namespace AniSharp.Client
             where T : Media => GetMediaAsync<T>(query).Result;
         public async Task<T> GetMediaAsync<T>(MediaQuery query)
             where T : Media => await graphql.PostAsync<T>(query, Headers);
+        public T SearchMedia<T>(MediaPageQuery query)
+            where T : MediaPage => SearchMediaAsync<T>(query).Result;
+        public async Task<T> SearchMediaAsync<T>(MediaPageQuery query)
+            where T : MediaPage => await graphql.PostAsync<T>(query, Headers);
+            
 
         public T GetAnime<T>(AnimeQuery query)
             where T : Anime => GetAnimeAsync<T>(query).Result;

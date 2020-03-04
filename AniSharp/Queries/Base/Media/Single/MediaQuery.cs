@@ -2,7 +2,7 @@ using AniSharp.Types.Media;
 using CSGraphQL.GraphQL;
 using CSGraphQL.GraphQL.Short;
 
-namespace AniSharp.Queries.Base.Media
+namespace AniSharp.Queries.Base.Media.Single
 {
 	[QueryName("Media")]
 	public abstract class MediaQuery : GraphQlQuery

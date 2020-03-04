@@ -3,7 +3,7 @@ using AniSharp.Types.Misc;
 using CSGraphQL.GraphQL;
 using CSGraphQL.GraphQL.Short;
 
-namespace AniSharp.Results
+namespace AniSharp.Results.Single
 {
 	public class Media : GraphQlType
 	{

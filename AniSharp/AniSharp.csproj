@@ -7,11 +7,11 @@
         <Authors>Massimo Bertozzi</Authors>
         <Description>A simple to use client library for Anilist</Description>
         <RepositoryUrl>https://github.com/MaximumOverflow/AniSharp</RepositoryUrl>
-        <PackageVersion>1.5.0</PackageVersion>
+        <PackageVersion>1.6.4</PackageVersion>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="CSGraphQL" Version="0.8.7" />
+      <PackageReference Include="CSGraphQL" Version="0.8.11" />
     </ItemGroup>
 
 </Project>
