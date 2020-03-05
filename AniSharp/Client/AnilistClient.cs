@@ -9,7 +9,6 @@ using System;
 using System.Collections.Generic;
 using AniSharp.Mutations.SimpleMutations;
 using AniSharp.Queries.AdvancedQueries;
-using AniSharp.Queries.Base.Media;
 using AniSharp.Queries.Base.Media.Multiple;
 using AniSharp.Queries.Base.Media.Single;
 using AniSharp.Queries.Base.Users;
@@ -18,8 +17,10 @@ using AniSharp.Results.Single;
 using AniSharp.Types.Misc;
 using AniSharp.Types.Users;
 using CSGraphQL.Extensions;
+
 using Media = AniSharp.Results.Single.Media;
 using User = AniSharp.Results.Single.User;
+using Header = System.Collections.Generic.KeyValuePair<string, string>;
 
 namespace AniSharp.Client
 {
@@ -28,8 +29,8 @@ namespace AniSharp.Client
         private static readonly GraphQlClient graphql = new GraphQlClient("https://graphql.anilist.co");
         public static readonly AnilistClient Default = new AnilistClient();
 
-        private KeyValuePair<string, string>[] Headers => 
-            _loginCredentials.HasValue ? new[] {_loginCredentials.Value.AccessHeader} : null;
+        private Header[] Headers => 
+            _loginCredentials.HasValue ? new[] {_loginCredentials.Value.AccessHeader} : new Header[0];
         
         #region Queries
 
